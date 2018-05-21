@@ -23,14 +23,14 @@ Chromosome* BinaryChromosome::clone(void) {
 // creates a chromosome randomly selecting the genes.
 BinaryChromosome::BinaryChromosome(int nbits) {
   random = Random::Instance();
-  RandomBits rand = RandomBits(); 
+  RandomBits rand = RandomBits();
   bitstring = rand.make_random_bits(nbits);
   this->nbits = nbits;
   trace = false;
 }
 
 // creates a chromosome with a previously determined set of genes.
-BinaryChromosome::BinaryChromosome(string bitstring) { 
+BinaryChromosome::BinaryChromosome(string bitstring) {
   random = Random::Instance();
   this->bitstring = bitstring;
   this->nbits = bitstring.length();
@@ -54,7 +54,7 @@ void BinaryChromosome::crossover(Chromosome *chromo_mate) {
 
   this->set_bitstring(c_one.substr(0, pos) + c_two.substr(pos, this->nbits-pos));
   mate->set_bitstring(c_two.substr(0, pos) + c_one.substr(pos, this->nbits-pos));
-  
+ 
   if (trace) {
     cout << "Crossover Operations: Position = " << pos << endl;
     cout << "Parents v(" << c_one << ") and v(" << c_two << ")" << endl;
@@ -63,13 +63,13 @@ void BinaryChromosome::crossover(Chromosome *chromo_mate) {
     string buffer;
     for (int i=0; i < pos; i++) buffer += " ";
 
-    cout << "\tv(" << this << ")" << endl; 
+    cout << "\tv(" << this << ")" << endl;
     cout << "\t  " << buffer << "^" << endl;
     cout << "\tv(" << (*mate) << ")" << endl;
     cout << "\t  " << buffer << "^" << endl;
     cout << endl;
   }
-}      
+}
 
 void BinaryChromosome::mutate(double mutate_prob) {
   string orig_bitstring = bitstring;
@@ -86,7 +86,7 @@ void BinaryChromosome::mutate(double mutate_prob) {
   if (trace && mutated) {
     cout << "Mutation Operation for: v(" << orig_bitstring << ")" << endl;
     cout << "Bit Position(s) Changed: ";
-    for (int i=0; i < changed_bits.size(); i++) 
+    for (int i=0; i < changed_bits.size(); i++)
       cout << changed_bits[i] << " ";
     cout << "Result = v(" << bitstring << ")" << endl;
   }
@@ -101,7 +101,7 @@ int main(void) {
   assert(bc1->repr() == "000000");
   string orig_bc2 = "111111";
   BinaryChromosome *bc2 = new BinaryChromosome(orig_bc2);
-  
+ 
   assert(bc1->evaluate() == 0);
 
   bc1->crossover(bc2);

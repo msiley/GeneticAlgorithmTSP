@@ -1,16 +1,16 @@
 #include "random.h"
 using namespace std;
 
-/* 
+/*
 Random - a Singleton class used to generate various types of psuedo-random numbers.
 */
 
 Random* Random::pinstance = 0;
 
 Random* Random::Instance(void) {
-  if (pinstance == 0) 
-    pinstance = new Random; 
-  return pinstance; 
+  if (pinstance == 0)
+    pinstance = new Random;
+  return pinstance;
 }
 
 Random::Random(void) {
@@ -39,7 +39,7 @@ Random::~Random(void) {}
 
 int main(void) {
   Random *r = Random::Instance();
-  for (int i=0; i<1000; i++) 
+  for (int i=0; i<1000; i++)
     assert(0 <= r->rand_int(5) <= 5);
 
   return 0;
