@@ -15,7 +15,7 @@ using namespace std;
 /*
 Genetic Algorithm Outline
 
-begin 
+begin
   t = 0
   initialize P(t)
   evaluate P(t)
@@ -35,7 +35,7 @@ end
 
 int main(void) {
   BinaryChromoFactory *factory = new BinaryChromoFactory(20);
-  GeneticAlgorithm gapop = GeneticAlgorithm(20, 0.45, 0.02, factory); 
+  GeneticAlgorithm gapop = GeneticAlgorithm(20, 0.45, 0.02, factory);
   gapop.turn_trace_off();
   //gapop.turn_trace_on();
   gapop.evaluate();
@@ -65,7 +65,7 @@ int main(void) {
         last_improvement = 0; // reset there was an improvement.
       }
     }
-  
+
     if (last_improvement > 10000) {
       cout << "No More Improvement" << endl;
       break;
@@ -81,9 +81,9 @@ int main(void) {
 }
 
 
-// 
+//
 // Random Solution
-// 
+//
 /*
 def random_solution(nbits, pop_size, generations, fitness):
 
